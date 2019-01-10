@@ -1,3 +1,9 @@
+//To launch strapi server
+// cd server
+// strapi start
+
+
+
 import React, { Component } from 'react';
 // eslint-disable-next-line
 import { Container, Box, Heading, Card, Image, Text, SearchField, Icon, Spinner} from 'gestalt';
