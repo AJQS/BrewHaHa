@@ -1,6 +1,7 @@
 import React from "react";
 import Strapi from "strapi-sdk-javascript/build/main";
 import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from "gestalt";
+import { calculatePrice } from '../utils'
 import { Link } from 'react-router-dom'
 const apiUrl = process.env.API_URL || "http://localhost:1337";
 const strapi = new Strapi(apiUrl);
@@ -60,6 +61,13 @@ addToCart = brew => {
     updatedItems[alreadyInCart].quantity +=1;
     this.setState({ cartItems: updatedItems});
   }
+
+  //use filter method to parse throug id's to make sure they arent equal to the itemToDeleteId
+  //then set the state to remove the item with the id that is needed
+// deleteItemFromCart = itemToDeleteId => {
+//     const filteredItems = this.state.cartItems.filter(item => item._id !== itemToDeleteId);
+//     this.setState({ cartItems: filteredItems });
+// }
 
 }
   render() {
@@ -161,7 +169,11 @@ addToCart = brew => {
                         accessibilityLabel="Delete Item"
                         icon="cancel"
                         size="sm"
-                        iconColor='red'/>
+                        iconColor='red'
+                        //inline arrow function calls deleteItemFromCart function and passes the item id in order
+                        //to delete an item from cart on red 'x' click
+                        onClick={() => this.deleteItemFromCart(item._id)}
+                        />
                       </Box>
                     ))}
 
@@ -172,7 +184,7 @@ addToCart = brew => {
                           <Text color="red">Please select some items</Text>
                         )}
                       </Box>
-                          <Text size="lg">Total: $3.99</Text>
+                          <Text size="lg">Total: {calculatePrice(cartItems)}</Text>
                             <Text>
                               <Link to="/checkout">Checkout</Link>
                             </Text>
