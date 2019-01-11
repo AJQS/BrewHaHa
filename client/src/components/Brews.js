@@ -1,7 +1,7 @@
 import React from "react";
 import Strapi from "strapi-sdk-javascript/build/main";
 import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from "gestalt";
-import { calculatePrice } from '../utils'
+import { calculatePrice, setCart, getCart } from '../utils'
 import { Link } from 'react-router-dom'
 const apiUrl = process.env.API_URL || "http://localhost:1337";
 const strapi = new Strapi(apiUrl);
@@ -36,7 +36,8 @@ class Brews extends React.Component {
       });
       this.setState({
         brews: response.data.brand.brews,
-        brand: response.data.brand.name
+        brand: response.data.brand.name,
+        cartItems: getCart()
       });
     } catch (err) {
       console.error(err);
@@ -59,14 +60,16 @@ addToCart = brew => {
   } else {
     const updatedItems = [...this.state.cartItems];
     updatedItems[alreadyInCart].quantity +=1;
-    this.setState({ cartItems: updatedItems});
-  }
+    // eslint-disable-next-line
+    this.setState({ cartItems: updatedItems}), () => setCart(updatedItems);
+}
 
   //use filter method to parse throug id's to make sure they arent equal to the itemToDeleteId
   //then set the state to remove the item with the id that is needed
+
 // deleteItemFromCart = itemToDeleteId => {
 //     const filteredItems = this.state.cartItems.filter(item => item._id !== itemToDeleteId);
-//     this.setState({ cartItems: filteredItems });
+//     this.setState({ cartItems: filteredItems }, () => setCart(filteredItems));
 // }
 
 }

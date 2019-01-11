@@ -13,6 +13,7 @@ export const setCart = (value, cartKey = CART_KEY) => {
   }
 };
 
+//JSON.parse does the opposite of stringify
 export const getCart = (cartKey = CART_KEY) => {
   if (localStorage && localStorage.getItem(cartKey)) {
     return JSON.parse(localStorage.getItem(cartKey));
