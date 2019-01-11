@@ -1,6 +1,6 @@
 import React from "react";
 import Strapi from "strapi-sdk-javascript/build/main";
-import { Box, Heading, Text, Image, Card, Button, Mask } from "gestalt";
+import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from "gestalt";
 import { Link } from 'react-router-dom'
 const apiUrl = process.env.API_URL || "http://localhost:1337";
 const strapi = new Strapi(apiUrl);
@@ -41,7 +41,27 @@ class Brews extends React.Component {
       console.error(err);
     }
   }
+addToCart = brew => {
+  //alreadyInCart constant var checks if the brew you are trying to add to cart is already in the cart by
+  //referencing the id of the brew
+  const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew._id);
 
+  //if the brew is not already in the cart (-1 = false) then add the brew to the end of the cart array
+  //concat adds to end
+  if (alreadyInCart === -1) {
+    const updatedItems = this.state.cartItems.concat({
+      ...brew,
+      quantity: 1
+    });
+    this.setState({ cartItems: updatedItems });
+    // if the brew is already in the cart, increase the quantity of it by 1
+  } else {
+    const updatedItems = [...this.state.cartItems];
+    updatedItems[alreadyInCart].quantity +=1;
+    this.setState({ cartItems: updatedItems});
+  }
+
+}
   render() {
     const { brand, brews, cartItems } = this.state;
 
@@ -107,7 +127,10 @@ class Brews extends React.Component {
                     <Text color="orchid">${brew.price}</Text>
                     <Box marginTop={2}>
                       <Text bold size="xl">
-                        <Button color="blue" text="Add to Cart" />
+                      {/* Button here with inline arrow function allows selected brew to be added to cart
+                      -- it calls the addToCart function */}
+                        <Button onClick={() => this.addToCart(brew)}
+                        color="blue" text="Add to Cart" />
                       </Text>
                     </Box>
                   </Box>
@@ -127,7 +150,22 @@ class Brews extends React.Component {
                         {cartItems.length} items selected
                       </Text>
                     
-                    {/* Cart Items (will add) */}
+                    {/* Cart Items */}
+                    {cartItems.map(item => (
+                      <Box key={item._id} display="flex" alignItems="center">
+                        <Text>
+                          {item.name} x {item.quantity} - {(item.quantity * item.price).toFixed(2)}
+                        </Text>
+                        {/* adds a red 'x' to delete an item from cart after it has been added */}
+                        <IconButton
+                        accessibilityLabel="Delete Item"
+                        icon="cancel"
+                        size="sm"
+                        iconColor='red'/>
+                      </Box>
+                    ))}
+
+
                     <Box display="flex" alignItems="center" justifyContent="center" direction="column">
                       <Box margin={2}>
                         {cartItems.length === 0 && (
