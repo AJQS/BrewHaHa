@@ -2,6 +2,9 @@
 // cd server
 // strapi start
 // look in terminal for strapi admin panel server info - click to follow
+// new terminal
+// cd client
+// npm start
 
 
 
