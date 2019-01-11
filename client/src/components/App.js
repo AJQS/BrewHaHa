@@ -1,6 +1,7 @@
 //To launch strapi server
 // cd server
 // strapi start
+// look in terminal for strapi admin panel server info - click to follow
 
 
 
