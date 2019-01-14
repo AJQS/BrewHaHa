@@ -49,22 +49,48 @@ class App extends Component {
   }
 
   handleChange = ({ value }) => {
-    this.setState({ searchTerm: value });
+    this.setState({ searchTerm: value }, () => this.searchBrands());
   };
 
-  filteredBrands = ({ searchTerm, brands }) => {
-    return brands.filter(brand => {
-        //this checks if the there is a match in the brand name AND the brand description to what
-    //the user has typed in the search bar
-      return (
-        brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        brand.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  // filteredBrands = ({ searchTerm, brands }) => {
+  //   return brands.filter(brand => {
+  //       //this checks if the there is a match in the brand name AND the brand description to what
+  //   //the user has typed in the search bar
+  //     return (
+  //       brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //       brand.description.toLowerCase().includes(searchTerm.toLowerCase())
+  //     );
+  //   });
+  // };
+
+  //SEARCH FOR BRAND NAMES
+  //Get search to return values in the graphql format below
+  searchBrands = async () => {
+    const response = await strapi.request('POST', '/graphql', {
+      data: {
+        query: `query	{
+          brands(where: {
+            name_contains: "${this.state.searchTerm}"
+          }){
+            _id
+            name
+            description
+            image {
+              url
+            }
+          }
+        }`
+      }
     });
-  };
+    console.log(this.state.searchTerm, response.data.brands);
+    this.setState({
+      brands: response.data.brands,
+      loadingBrands: false
+    });
+  }
 
   render() {
-    const { searchTerm, loadingBrands } = this.state;
+    const { searchTerm, loadingBrands, brands } = this.state;
 
     return (
       <Container>
@@ -106,7 +132,9 @@ class App extends Component {
           display="flex"
           justifyContent="around"
         >
-          {this.filteredBrands(this.state).map(brand => (
+        // map the data of the user's search based on matching letters of
+        // their text and brand names
+          {brands.map(brand => (
             <Box paddingY={4} margin={2} width={200} key={brand._id}>
               <Card
                 image={
