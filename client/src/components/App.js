@@ -5,6 +5,8 @@
 // new terminal
 // cd client
 // npm start
+// in browser, http://localhost:1337/graphql for graphql playground
+
 import React, { Component } from "react";
 // eslint-disable-next-line
 import { Container, Box, Heading, Card, Image, Text, SearchField, Icon } from "gestalt";
