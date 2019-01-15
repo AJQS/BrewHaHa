@@ -132,8 +132,8 @@ class App extends Component {
           display="flex"
           justifyContent="around"
         >
-        // map the data of the user's search based on matching letters of
-        // their text and brand names
+        {/* // map the data of the user's search based on matching letters of
+        // their text and brand names */}
           {brands.map(brand => (
             <Box paddingY={4} margin={2} width={200} key={brand._id}>
               <Card
