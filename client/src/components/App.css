@@ -13,3 +13,12 @@ a:visited {
 .active {
   font-style: italic;
 }
+
+/* Media Queries */
+/* Total mobile responsiveness by removing the main title
+    class when the max width is less than 400px */
+@media (max-width: 400px) {
+  .main-tile{
+    display: none;
+  }
+}

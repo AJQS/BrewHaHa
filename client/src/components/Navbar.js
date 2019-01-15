@@ -19,6 +19,7 @@ class Navbar extends React.Component {
   }
 }
 
+//NAVBAR TO SHOW WHEN USER IS LOGGED IN
 const AuthNav = ({ handleSignout }) => (
   <Box
     display="flex"
@@ -47,9 +48,12 @@ const AuthNav = ({ handleSignout }) => (
             src="./icons/logo.svg"
           />
         </Box>
+        {/* Title */}
+        <div className="main-title">
         <Heading size="xs" color="orange">
           BrewHaha
         </Heading>
+        </div>
       </Box>
     </NavLink>
 
@@ -64,6 +68,7 @@ const AuthNav = ({ handleSignout }) => (
   </Box>
 );
 
+//NAVBAR TO SHOW WHEN USER NOT
 const UnAuthNav = () => (
   <Box
     display="flex"
@@ -92,9 +97,11 @@ const UnAuthNav = () => (
             src="./icons/logo.svg"
           />
         </Box>
+        <div className="main-ttile">
         <Heading size="xs" color="orange">
           BrewHaha
         </Heading>
+        </div>
       </Box>
     </NavLink>
 
