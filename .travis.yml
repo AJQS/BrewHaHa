@@ -13,6 +13,7 @@ cache:
 
 install:
   - npm install
+  - npm test
 
 deploy:
   provider: heroku
