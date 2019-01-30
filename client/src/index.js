@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "gestalt/dist/gestalt.css";
-
 import App from "./components/App";
 import Navbar from "./components/Navbar";
 import Signin from "./components/Signin";
