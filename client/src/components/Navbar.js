@@ -26,14 +26,14 @@ const AuthNav = ({ handleSignout }) => (
     alignItems="center"
     justifyContent="around"
     height={70}
-    color="midnight"
+    color="#cc9900"
     padding={1}
     shape="roundedBottom"
   >
     {/* Checkout Link */}
     <NavLink activeClassName="active" to="/checkout">
-      <Text size="xl" color="white">
-        Checkout
+      <Text size="xl" color="midnight" >
+        <b>Checkout</b>
       </Text>
     </NavLink>
 
@@ -50,8 +50,8 @@ const AuthNav = ({ handleSignout }) => (
         </Box>
         {/* Title */}
         <div className="main-title">
-        <Heading size="xs" color="orange">
-          BrewHaha
+        <Heading size="xs" color="orchid">
+          BrewSkies
         </Heading>
         </div>
       </Box>
@@ -75,13 +75,13 @@ const UnAuthNav = () => (
     alignItems="center"
     justifyContent="around"
     height={70}
-    color="midnight"
+    color="#cc9900"
     padding={1}
     shape="roundedBottom"
   >
     {/* Sign In Link */}
     <NavLink activeClassName="active" to="/signin">
-      <Text size="xl" color="white">
+      <Text size="xl" color="midnight">
         Sign In
       </Text>
     </NavLink>
@@ -98,8 +98,8 @@ const UnAuthNav = () => (
           />
         </Box>
         <div className="main-ttil">
-        <Heading size="xs" color="orange">
-          BrewHaha
+        <Heading size="xs" color="orchid">
+          BrewSkies
         </Heading>
         </div>
       </Box>
@@ -107,7 +107,7 @@ const UnAuthNav = () => (
 
     {/* Sign Up Link */}
     <NavLink activeClassName="active" to="/signup">
-      <Text size="xl" color="white">
+      <Text size="xl" color="midnight">
         Sign Up
       </Text>
     </NavLink>

@@ -94,13 +94,13 @@ class Brews extends React.Component {
         <Box display="flex" direction="column" alignItems="center">
           {/* Brews Heading */}
           <Box margin={2}>
-            <Heading color="orchid">{brand}</Heading>
+            <Heading color="#800000">{brand}</Heading>
           </Box>
           {/* Brews */}
           <Box
             dangerouslySetInlineStyle={{
               __style: {
-                backgroundColor: "#00cc00"
+                backgroundColor: "#66ccff"
               }
             }}
             wrap
