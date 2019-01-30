@@ -62,7 +62,7 @@ class Signin extends React.Component {
         <Box
           dangerouslySetInlineStyle={{
             __style: {
-              backgroundColor: "#d6a3b1"
+              backgroundColor: "#ccb3ff"
             }
           }}
           margin={4}

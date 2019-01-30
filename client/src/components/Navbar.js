@@ -68,7 +68,7 @@ const AuthNav = ({ handleSignout }) => (
   </Box>
 );
 
-//NAVBAR TO SHOW WHEN USER NOT
+//NAVBAR TO SHOW WHEN USER NOT LOGGED
 const UnAuthNav = () => (
   <Box
     display="flex"
@@ -97,7 +97,7 @@ const UnAuthNav = () => (
             src="./icons/logo.svg"
           />
         </Box>
-        <div className="main-ttile">
+        <div className="main-ttil">
         <Heading size="xs" color="orange">
           BrewHaha
         </Heading>

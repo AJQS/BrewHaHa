@@ -62,7 +62,7 @@ class Signup extends React.Component {
         <Box
           dangerouslySetInlineStyle={{
             __style: {
-              backgroundColor: "#ebe2da"
+              backgroundColor: "#ccb3ff"
             }
           }}
           margin={4}
