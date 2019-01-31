@@ -1,11 +1,11 @@
 {
   "name": "ecommerce-react-graphql-stripe",
   "version": "1.0.0",
-  "description": "",
+  "description": "test deployment of brewskies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "author": "",
   "license": "ISC"
