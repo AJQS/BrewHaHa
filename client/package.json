@@ -11,7 +11,7 @@
     "react-scripts": "1.1.5",
     "react-spinners": "^0.4.5",
     "react-stripe-elements": "^2.0.1",
-    "strapi": "^3.0.0-alpha.18",
+    "strapi": "^3.0.0-alpha.21",
     "strapi-sdk-javascript": "^0.2.1"
   },
   "scripts": {
