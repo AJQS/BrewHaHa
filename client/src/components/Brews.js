@@ -100,7 +100,7 @@ class Brews extends React.Component {
           <Box
             dangerouslySetInlineStyle={{
               __style: {
-                backgroundColor: "#66ccff"
+                backgroundColor: "transparent"
               }
             }}
             wrap
